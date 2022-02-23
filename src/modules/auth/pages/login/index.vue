@@ -1,6 +1,5 @@
 <template>
 	<div class="q-pa-md flex column">
-		<h5 class="text-primary q-my-sm text-center text-weight-bold">{{ $t('sentences.login') }}</h5>
 		<login-form @submit="handleSubmit" />
 	</div>
 </template>

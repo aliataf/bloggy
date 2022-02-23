@@ -2,9 +2,7 @@
 	<div class="row fullscreen">
 		<div class="xs-hide sm-hide col-6 full-height bg-blue-9 relative-position">
 			<auth-placeholder class="absolute-center" />
-			<h5 class="absolute-bottom q-pb-lg text-white text-center app-title">
-				{{ $t('app.title') }}
-			</h5>
+			<h5 class="absolute-bottom q-pb-lg text-white text-center app-title">Bloggy</h5>
 		</div>
 		<div class="col-12 col-md-6 q-pa-md">
 			<router-view />

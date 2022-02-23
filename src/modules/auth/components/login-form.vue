@@ -1,14 +1,12 @@
 <template>
 	<q-card class="form-container">
-		<div class="text-caption2 text-center q-mb-lg text-grey-7">
-			{{ $t('sentences.loginPhrase') }}
-		</div>
+		<div class="text-caption2 text-center q-mb-lg text-grey-7">Login to your account</div>
 		<q-form @submit="$emit('submit', loginForm)" class="custom-form">
 			<q-input
 				filled
 				v-model="loginForm.email"
 				type="email"
-				:label="$t('fields.email')"
+				label="Email"
 				:rules="[(val) => !!val || '* Required', (val) => isValidEmail(val) || 'Invalid email']"
 				lazy-rules
 			/>
@@ -16,7 +14,7 @@
 				filled
 				v-model="loginForm.password"
 				:type="!passwordVisible ? 'password' : 'text'"
-				:label="$t('fields.password')"
+				label="Password"
 				:rules="[
 					(val) => !!val || '* Required',
 					(val) => val.length >= 8 || 'Minimum 8 characters',
@@ -36,7 +34,7 @@
 			<q-btn
 				type="submit"
 				color="primary"
-				:label="$t('actions.login')"
+				label="Login"
 				class="q-mt-xl full-width"
 				size="lg"
 				no-caps
