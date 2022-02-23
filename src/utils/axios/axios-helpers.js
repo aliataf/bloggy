@@ -1,7 +1,7 @@
-import { Notify } from 'quasar';
-import authHelper from './auth-helper';
-import { router } from '@/router';
-import { store } from '@/store';
+import { Notification } from 'element-ui';
+import authHelper from '@/utils/auth-helper';
+import router from '@/router';
+import store from '@/store';
 
 export function addNotificationInterceptor(axiosInstance) {
 	axiosInstance.interceptors.response.use(
@@ -38,9 +38,10 @@ export function addNotificationInterceptor(axiosInstance) {
 }
 
 function showNotification(text, type) {
-	Notify.create({
+	Notification({
 		message: `${text}`,
-		type: type,
+		type,
+		duration: 5 * 1000,
 	});
 }
 

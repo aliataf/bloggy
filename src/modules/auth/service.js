@@ -1,4 +1,4 @@
-import { axiosInstance, unauthenticatedAxiosInstance } from '@/boot/axios';
+import { axiosInstance, unauthenticatedAxiosInstance } from '@/utils/axios';
 import * as ep from './endpoints';
 
 export default class Service {

@@ -1,9 +1,7 @@
 import Login from './pages/login/store';
-import ResetPassword from './pages/reset-password/store';
-import TwoFactorAuth from './pages/two-factor-auth/store';
 import authHelper from '@/utils/auth-helper';
 import AuthService from './service';
-import { axiosInstance, unauthenticatedAxiosInstance } from '@/boot/axios';
+import { axiosInstance, unauthenticatedAxiosInstance } from '@/utils/axios';
 const refreshTokenAPI = process.env.BASE_URL + 'api/refresh';
 
 function getState() {
@@ -19,8 +17,6 @@ export default {
 	namespaced: true,
 	modules: {
 		Login,
-		ResetPassword,
-		TwoFactorAuth,
 	},
 	state: getState,
 	getters: {
