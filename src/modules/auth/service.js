@@ -1,4 +1,4 @@
-import { axiosInstance, unauthenticatedAxiosInstance } from '@/utils/axios';
+import { unauthenticatedAxiosInstance } from '@/utils/axios';
 import * as ep from './endpoints';
 
 export default class Service {
@@ -10,12 +10,6 @@ export default class Service {
 
 	static signup(qp = {}) {
 		return unauthenticatedAxiosInstance.post(ep.SIGNUP, qp).then((res) => {
-			return res.data;
-		});
-	}
-
-	static logout() {
-		return axiosInstance.post(ep.LOGOUT).then((res) => {
 			return res.data;
 		});
 	}
