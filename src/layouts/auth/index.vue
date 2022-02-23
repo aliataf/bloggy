@@ -28,7 +28,7 @@ export default {
 }
 
 .placeholder-container {
-	background-color: #f5f5f5;
+	background-color: #f2f2f2;
 	padding-left: 20px;
 	padding-right: 40px;
 }

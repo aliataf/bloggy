@@ -1,12 +1,33 @@
-export function isValidEmail(email) {
-	const emailRegex =
-		/^(?=[a-zA-Z0-9@._%+-]{6,254}$)[a-zA-Z0-9._%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\.){1,8}[a-zA-Z]{2,63}$/;
-	return emailRegex.test(email);
+export function isValidEmail(rule, value, callback) {
+	if (value === '') {
+		callback(new Error('Please input email field'));
+	} else {
+		const emailRegex =
+			/^(?=[a-zA-Z0-9@._%+-]{6,254}$)[a-zA-Z0-9._%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\.){1,8}[a-zA-Z]{2,63}$/;
+		if (emailRegex.test(value)) {
+			callback();
+		} else {
+			callback(new Error('Please input a valid email'));
+		}
+	}
 }
 
-export function isValidPassword(password) {
-	const passwordRegex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
-	return passwordRegex.test(password);
+export function isValidPassword(rule, value, callback) {
+	if (value === '') {
+		callback(new Error('Please input password field'));
+	} else {
+		const passwordRegex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+
+		if (passwordRegex.test(value)) {
+			callback();
+		} else {
+			callback(
+				new Error(
+					'Password must contain at least 8 characters, one uppercase, one lowercase, one number and one special character',
+				),
+			);
+		}
+	}
 }
 
 export function isObject(obj) {
