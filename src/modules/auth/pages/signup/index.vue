@@ -1,21 +1,21 @@
 <template>
 	<div class="p-6">
-		<login-form @submit="handleSubmit" @signup="$router.push('/signup')" />
+		<signup-form @submit="handleSubmit" @login="$router.push('/login')" />
 	</div>
 </template>
 
 <script>
 import { mapActions } from 'vuex';
-import LoginForm from '@/modules/auth/components/login-form.vue';
+import SignupForm from '@/modules/auth/components/signup-form.vue';
 
 export default {
 	components: {
-		LoginForm,
+		SignupForm,
 	},
 	methods: {
-		...mapActions('Auth/Login', ['login']),
+		...mapActions('Auth/Signup', ['signup']),
 		handleSubmit(payload) {
-			this.login(payload)
+			this.signup(payload)
 				.then(() => {
 					this.$router.push('/');
 				})

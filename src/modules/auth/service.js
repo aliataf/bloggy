@@ -7,6 +7,13 @@ export default class Service {
 			return res.data;
 		});
 	}
+
+	static signup(qp = {}) {
+		return unauthenticatedAxiosInstance.post(ep.SIGNUP, qp).then((res) => {
+			return res.data;
+		});
+	}
+
 	static logout() {
 		return axiosInstance.post(ep.LOGOUT).then((res) => {
 			return res.data;

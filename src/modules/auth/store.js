@@ -1,8 +1,9 @@
 import Login from './pages/login/store';
+import Signup from './pages/signup/store';
 import authHelper from '@/utils/auth-helper';
 import AuthService from './service';
 import { axiosInstance, unauthenticatedAxiosInstance } from '@/utils/axios';
-const refreshTokenAPI = process.env.BASE_URL + 'api/refresh';
+const refreshTokenAPI = process.env.VUE_APP_BASE_URL + 'api/refresh';
 
 function getState() {
 	return {
@@ -17,6 +18,7 @@ export default {
 	namespaced: true,
 	modules: {
 		Login,
+		Signup,
 	},
 	state: getState,
 	getters: {

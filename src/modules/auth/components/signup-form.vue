@@ -1,39 +1,44 @@
 <template>
 	<el-card class="form-container">
-		<div class="text-xl text-center mb-6">Login to your account</div>
-		<el-form ref="form" :model="loginForm" :rules="rules" class="custom-form">
+		<div class="text-xl text-center mb-6">Create a new account</div>
+		<el-form ref="form" :model="signupForm" :rules="rules" class="custom-form">
+			<el-form-item label="Username" prop="username">
+				<el-input v-model="signupForm.username"></el-input>
+			</el-form-item>
 			<el-form-item label="Email" prop="email">
-				<el-input v-model="loginForm.email"></el-input>
+				<el-input v-model="signupForm.email"></el-input>
 			</el-form-item>
 			<el-form-item label="Password" prop="password">
-				<el-input v-model="loginForm.password"></el-input>
+				<el-input v-model="signupForm.password" type="password"></el-input>
 			</el-form-item>
 
 			<el-form-item class="mt-10">
-				<el-button type="primary" @click="onSubmit">Login</el-button>
+				<el-button type="primary" @click="onSubmit">Signup</el-button>
 			</el-form-item>
 
 			<div class="flex justify-end items-center gap-x-1 text-sm">
-				<span class="text-gray-500">Don't have an account?</span>
+				<span class="text-gray-500">Already registered?</span>
 				<!-- Doesn't have account yet -->
-				<el-button type="text" @click="$emit('signup')"> Signup </el-button>
+				<el-button type="text" @click="$emit('login')"> Login </el-button>
 			</div>
 		</el-form>
 	</el-card>
 </template>
 
 <script>
-import { isValidEmail, isValidPassword } from '@/utils/validators';
+import { isNotEmpty, isValidEmail, isValidPassword } from '@/utils/validators';
 import { mapGetters } from 'vuex';
 
 export default {
 	data() {
 		return {
-			loginForm: {
+			signupForm: {
+				username: '',
 				email: '',
 				password: '',
 			},
 			rules: {
+				username: [{ validator: isNotEmpty, trigger: 'blur' }],
 				email: [{ validator: isValidEmail, trigger: 'blur' }],
 				password: [{ validator: isValidPassword, trigger: 'blur' }],
 			},
@@ -47,7 +52,7 @@ export default {
 		onSubmit() {
 			this.$refs.form.validate(async (valid) => {
 				if (valid) {
-					this.$emit('submit', this.loginForm);
+					this.$emit('submit', this.signupForm);
 				}
 			});
 		},

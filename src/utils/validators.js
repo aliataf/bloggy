@@ -1,3 +1,10 @@
+export function isNotEmpty(rule, value, callback) {
+	if (value === '') {
+		callback(new Error(`Field cannot be empty`));
+	}
+	callback();
+}
+
 export function isValidEmail(rule, value, callback) {
 	if (value === '') {
 		callback(new Error('Please input email field'));
