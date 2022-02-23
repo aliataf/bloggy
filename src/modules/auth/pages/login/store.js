@@ -21,9 +21,9 @@ export default {
 		async login({ commit, dispatch }, payload) {
 			commit('setLoading', true);
 			try {
-				const { data } = await AuthService.login(payload);
-				dispatch('User/storeUser', data.user, { root: true });
-				commit('Auth/setAccessToken', data.token, { root: true });
+				const { user } = await AuthService.login(payload);
+				dispatch('User/storeUser', user, { root: true });
+				commit('Auth/setAccessToken', user.token, { root: true });
 			} catch (error) {
 				throw error;
 			} finally {

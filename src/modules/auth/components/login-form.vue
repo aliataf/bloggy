@@ -47,7 +47,7 @@ export default {
 		onSubmit() {
 			this.$refs.form.validate(async (valid) => {
 				if (valid) {
-					this.$emit('submit', this.loginForm);
+					this.$emit('submit', { user: this.loginForm });
 				}
 			});
 		},
