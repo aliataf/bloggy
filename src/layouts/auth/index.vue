@@ -1,10 +1,10 @@
 <template>
-	<div class="row fullscreen">
-		<div class="xs-hide sm-hide col-6 full-height bg-blue-9 relative-position">
+	<div class="row h-screen w-screen">
+		<div class="hidden md:block w-12/12 md:w-6/12 h-full relative">
 			<auth-placeholder class="absolute-center" />
 			<h5 class="absolute-bottom q-pb-lg text-white text-center app-title">Bloggy</h5>
 		</div>
-		<div class="col-12 col-md-6 q-pa-md">
+		<div class="w-12/12 md:w-6/12 q-pa-md">
 			<router-view />
 		</div>
 	</div>
