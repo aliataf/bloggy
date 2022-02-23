@@ -1,5 +1,5 @@
 <template>
-	<inline-svg :src="url" />
+	<inline-svg :src="url" width="100%" height="100%" />
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-	<div class="q-pa-md flex column">
+	<div class="p-6">
 		<login-form @submit="handleSubmit" />
 	</div>
 </template>

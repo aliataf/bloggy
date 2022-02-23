@@ -1,50 +1,19 @@
 <template>
-	<q-card class="form-container">
-		<div class="text-caption2 text-center q-mb-lg text-grey-7">Login to your account</div>
-		<q-form @submit="$emit('submit', loginForm)" class="custom-form">
-			<q-input
-				filled
-				v-model="loginForm.email"
-				type="email"
-				label="Email"
-				:rules="[(val) => !!val || '* Required', (val) => isValidEmail(val) || 'Invalid email']"
-				lazy-rules
-			/>
-			<q-input
-				filled
-				v-model="loginForm.password"
-				:type="!passwordVisible ? 'password' : 'text'"
-				label="Password"
-				:rules="[
-					(val) => !!val || '* Required',
-					(val) => val.length >= 8 || 'Minimum 8 characters',
-				]"
-				lazy-rules
-				class="q-mt-sm"
-			>
-				<template v-slot:append>
-					<q-icon
-						:name="!passwordVisible ? 'visibility_off' : 'visibility'"
-						class="cursor-pointer"
-						@click="passwordVisible = !passwordVisible"
-					/>
-				</template>
-			</q-input>
+	<el-card class="form-container">
+		<div class="text-xl text-center mb-6">Login to your account</div>
+		<el-form ref="form" :model="loginForm" class="custom-form">
+			<el-form-item label="Email">
+				<el-input v-model="loginForm.email"></el-input>
+			</el-form-item>
+			<el-form-item label="Password">
+				<el-input v-model="loginForm.password"></el-input>
+			</el-form-item>
 
-			<q-btn
-				type="submit"
-				color="primary"
-				label="Login"
-				class="q-mt-xl full-width"
-				size="lg"
-				no-caps
-			/>
-		</q-form>
-
-		<q-inner-loading :showing="loading">
-			<q-spinner-gears size="50px" color="primary" />
-		</q-inner-loading>
-	</q-card>
+			<el-form-item>
+				<el-button type="primary" @click="onSubmit">Login</el-button>
+			</el-form-item>
+		</el-form>
+	</el-card>
 </template>
 
 <script>
@@ -66,6 +35,13 @@ export default {
 	},
 	methods: {
 		isValidEmail,
+		onSubmit() {
+			this.$refs.form.validate(async (valid) => {
+				if (valid) {
+					this.$emit('submit', this.loginForm);
+				}
+			});
+		},
 	},
 };
 </script>
@@ -81,29 +57,5 @@ export default {
 .custom-form {
 	width: 400px;
 	margin: auto;
-}
-
-.line {
-	height: 2px;
-	background: #aaa;
-	flex: 1 auto;
-}
-
-.icon {
-	width: 30px;
-	height: 30px;
-	border-radius: 50%;
-	background: black;
-}
-
-.icon-small {
-	width: 25px;
-	height: 25px;
-	border-radius: 50%;
-	background: black;
-}
-
-.text-small {
-	font-size: 10px;
 }
 </style>

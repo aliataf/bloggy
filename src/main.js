@@ -4,6 +4,11 @@ import router from './router';
 import store from './store';
 import './assets/tailwind.css';
 
+import ElementUI from 'element-ui';
+import './assets/element-variables.scss';
+
+Vue.use(ElementUI);
+
 Vue.config.productionTip = false;
 
 new Vue({

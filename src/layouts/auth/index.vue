@@ -1,10 +1,10 @@
 <template>
-	<div class="row h-screen w-screen">
-		<div class="hidden md:block w-12/12 md:w-6/12 h-full relative">
+	<div class="flex h-screen w-screen">
+		<div class="hidden md:block w-full md:w-6/12 h-full relative placeholder-container">
 			<auth-placeholder class="absolute-center" />
-			<h5 class="absolute-bottom q-pb-lg text-white text-center app-title">Bloggy</h5>
+			<h4 class="absolute bottom-0 pb-16 text-center app-title w-full">Bloggy</h4>
 		</div>
-		<div class="w-12/12 md:w-6/12 q-pa-md">
+		<div class="w-full md:w-6/12 p-6">
 			<router-view />
 		</div>
 	</div>
@@ -25,5 +25,11 @@ export default {
 	font-size: 2rem;
 	font-weight: 900;
 	text-transform: uppercase;
+}
+
+.placeholder-container {
+	background-color: #f5f5f5;
+	padding-left: 20px;
+	padding-right: 40px;
 }
 </style>
