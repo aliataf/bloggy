@@ -3,12 +3,12 @@ import ModuleLayout from './module-layout.vue';
 export default {
 	path: '/',
 	component: ModuleLayout,
-	redirect: 'home',
+	redirect: 'feed',
 	children: [
-		/* {
-			path: 'home',
-			component: () => import('./pages/home'),
-		}, */
+		{
+			path: 'feed',
+			component: () => import('./pages/feed'),
+		},
 		{
 			path: 'articles/create',
 			component: () => import('./pages/create-article'),

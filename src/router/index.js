@@ -19,7 +19,7 @@ router.beforeEach((to, from, next) => {
 		.then(() => {
 			if (whiteList.includes(to.path)) {
 				// if is logged in, redirect to the home page
-				next('/home');
+				next('/feed');
 			} else {
 				next();
 			}
@@ -29,7 +29,7 @@ router.beforeEach((to, from, next) => {
 				next();
 			} else {
 				authHelper.reset();
-				next('/login');
+				next('/home');
 			}
 		});
 });
