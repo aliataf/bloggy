@@ -14,6 +14,7 @@
 		<el-row class="mt-6 pb-[200px] flex justify-center">
 			<el-pagination
 				@size-change="handleSizeChange"
+				@current-change="handleCurrentChange"
 				:current-page.sync="pagination.offset"
 				:page-sizes="[5, 10, 15, 20]"
 				:page-size="pagination.limit"
@@ -49,6 +50,10 @@ export default {
 		...mapActions('Articles/Feed', ['getArticlesFeed']),
 		handleSizeChange(val) {
 			this.pagination.limit = val;
+			this.fetchData();
+		},
+		handleCurrentChange(val) {
+			this.pagination.offset = val * this.pagination.limit;
 			this.fetchData();
 		},
 		fetchData() {
