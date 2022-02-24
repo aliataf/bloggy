@@ -11,7 +11,7 @@ const router = new VueRouter({
 	routes,
 });
 
-const whiteList = ['/login', '/signup'];
+const whiteList = ['/login', '/signup', '/home'];
 
 router.beforeEach((to, from, next) => {
 	store

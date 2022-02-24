@@ -5,10 +5,10 @@ export default {
 	component: ModuleLayout,
 	redirect: 'home',
 	children: [
-		{
+		/* {
 			path: 'home',
 			component: () => import('./pages/home'),
-		},
+		}, */
 		{
 			path: 'articles/create',
 			component: () => import('./pages/create-article'),

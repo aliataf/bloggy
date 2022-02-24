@@ -1,15 +1,15 @@
-import { axiosInstance } from '@/utils/axios';
+import { axiosInstance, unauthenticatedAxiosInstance } from '@/utils/axios';
 import * as ep from './endpoints';
 
 export default class Service {
 	static getArticlesFeed(qp = {}) {
-		return axiosInstance.get(ep.ARTICLES_FEED, qp).then((res) => {
+		return axiosInstance.get(ep.ARTICLES_FEED, { params: qp }).then((res) => {
 			return res.data;
 		});
 	}
 
 	static getAllArticles(qp = {}) {
-		return axiosInstance.get(ep.ARTICLES, { params: qp }).then((res) => {
+		return unauthenticatedAxiosInstance.get(ep.ARTICLES, { params: qp }).then((res) => {
 			return res.data;
 		});
 	}

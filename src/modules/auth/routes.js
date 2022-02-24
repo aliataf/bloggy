@@ -13,5 +13,9 @@ export default {
 			path: 'signup',
 			component: () => import('./pages/signup'),
 		},
+		{
+			path: 'home',
+			component: () => import('@/modules/articles/pages/home'),
+		},
 	],
 };

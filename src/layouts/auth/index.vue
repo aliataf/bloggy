@@ -2,7 +2,12 @@
 	<div class="flex h-screen w-screen">
 		<div class="hidden lg:block w-full lg:w-6/12 h-full relative placeholder-container">
 			<auth-placeholder class="absolute-center" />
-			<h4 class="absolute bottom-0 pb-16 text-center app-title w-full">Bloggy</h4>
+			<h4
+				class="absolute bottom-0 pb-16 text-center app-title w-full cursor-pointer"
+				@click="$router.push('/home')"
+			>
+				Bloggy
+			</h4>
 		</div>
 		<div class="w-full lg:w-6/12 p-6">
 			<router-view />

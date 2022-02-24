@@ -1,28 +1,22 @@
 <template>
-	<el-row v-loading="loading" class="pt-4">
-		<el-row class="px-4">
-			<h1 class="text-3xl">My articles</h1>
+	<div class="h-full flex flex-col justify-between w-full">
+		<el-row type="flex" justify="end">
+			<el-button type="primary" @click="$router.push('/login')"> Login </el-button>
+			<el-button type="primary" @click="$router.push('/signup')"> Signup </el-button>
 		</el-row>
+		<el-row v-loading="loading" class="flex-1 flex flex-col justify-center text-center">
+			<el-row class="px-4">
+				<h1 class="text-3xl">General articles</h1>
+			</el-row>
 
-		<el-row class="mt-6">
-			<articles-feed v-if="articles.length > 0" :articles="articles" />
-			<div v-else>
-				<p class="text-center">No articles found.</p>
-			</div>
+			<el-row class="mt-6">
+				<articles-feed v-if="articles.length > 0" :articles="articles" />
+				<div v-else>
+					<p>No articles found.</p>
+				</div>
+			</el-row>
 		</el-row>
-
-		<el-row class="mt-6 pb-[200px] flex justify-center">
-			<el-pagination
-				@size-change="handleSizeChange"
-				:current-page.sync="pagination.offset"
-				:page-sizes="[5, 10, 15, 20]"
-				:page-size="pagination.limit"
-				layout="total, sizes, prev, pager, next"
-				:total="articlesCount"
-			>
-			</el-pagination>
-		</el-row>
-	</el-row>
+	</div>
 </template>
 
 <script>
@@ -33,36 +27,15 @@ export default {
 	components: {
 		ArticlesFeed,
 	},
-	data() {
-		return {
-			pagination: {
-				offset: 1,
-				limit: 5,
-			},
-		};
-	},
 	computed: {
-		...mapGetters('Articles/Home', ['articles', 'articlesCount', 'loading']),
+		...mapGetters('Articles/Home', ['articles', 'loading']),
 		...mapGetters('User', ['user']),
 	},
 	methods: {
 		...mapActions('Articles/Home', ['getArticles']),
-		handleSizeChange(val) {
-			this.pagination.limit = val;
-			this.getArticles(this.pagination);
-		},
 	},
 	created() {
-		this.getArticles(this.pagination);
-	},
-	watch: {
-		pagination: {
-			handler() {
-				this.getArticles(this.pagination);
-			},
-			deep: true,
-			immediate: true,
-		},
+		this.getArticles();
 	},
 };
 </script>
