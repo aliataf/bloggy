@@ -1,5 +1,10 @@
 <template>
-	<el-card shadow="hover" style="background: transparent; border: none" class="cursor-pointer">
+	<el-card
+		shadow="hover"
+		style="background: transparent; border: none"
+		class="cursor-pointer"
+		@click.native="$router.push(`/articles/${article.slug}`)"
+	>
 		<el-row type="flex" justify="space-between">
 			<div class="flex items-center">
 				<img :src="article.author.image" class="rounded-full w-12 h-12 mr-2" />

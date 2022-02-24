@@ -11,13 +11,13 @@ const router = new VueRouter({
 	routes,
 });
 
-const whiteList = ['/login', '/signup', '/home'];
+const whiteList = ['/login', '/signup', '/home', '/articles'];
 
 router.beforeEach((to, from, next) => {
 	store
 		.dispatch('Auth/getAccessToken')
 		.then(() => {
-			if (whiteList.includes(to.path)) {
+			if (whiteList.some((e) => to.path.startsWith(e))) {
 				// if is logged in, redirect to the home page
 				next('/feed');
 			} else {
@@ -25,7 +25,7 @@ router.beforeEach((to, from, next) => {
 			}
 		})
 		.catch(() => {
-			if (whiteList.includes(to.path)) {
+			if (whiteList.some((e) => to.path.startsWith(e))) {
 				next();
 			} else {
 				authHelper.reset();

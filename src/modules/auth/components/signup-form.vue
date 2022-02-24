@@ -1,5 +1,5 @@
 <template>
-	<el-card class="form-container">
+	<el-card v-loading="isLoading" class="form-container">
 		<div class="text-xl text-center mb-6">Create a new account</div>
 		<el-form ref="form" :model="signupForm" :rules="rules" class="custom-form">
 			<el-form-item label="Username" prop="username">
@@ -30,6 +30,12 @@ import { isNotEmpty, isValidEmail, isValidPassword } from '@/utils/validators';
 import { mapGetters } from 'vuex';
 
 export default {
+	props: {
+		isLoading: {
+			type: Boolean,
+			default: false,
+		},
+	},
 	data() {
 		return {
 			signupForm: {

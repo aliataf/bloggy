@@ -7,7 +7,6 @@ function getState() {
 	return {
 		loading: false,
 		accessToken: authHelper.getAccessToken(),
-		gettingAccessTokenPromise: null,
 	};
 }
 
@@ -21,6 +20,9 @@ export default {
 	getters: {
 		loading(state) {
 			return state.loading;
+		},
+		isLoggedIn(state) {
+			return state.accessToken;
 		},
 	},
 	mutations: {
@@ -43,6 +45,14 @@ export default {
 				return Promise.resolve(accessToken);
 			} else {
 				return Promise.reject(new Error('No access token'));
+			}
+		},
+		async isLoggedIn({ dispatch }) {
+			try {
+				await dispatch('getAccessToken');
+				return true;
+			} catch (error) {
+				return false;
 			}
 		},
 	},

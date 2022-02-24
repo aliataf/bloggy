@@ -19,4 +19,10 @@ export default class Service {
 			return res.data;
 		});
 	}
+
+	static getArticleBySlug(id, qp = {}) {
+		return unauthenticatedAxiosInstance.get(ep.ARTICLES_BY_SLUG(id), qp).then((res) => {
+			return res.data;
+		});
+	}
 }

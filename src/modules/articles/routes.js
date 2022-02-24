@@ -13,5 +13,9 @@ export default {
 			path: 'articles/create',
 			component: () => import('./pages/create-article'),
 		},
+		{
+			path: 'articles/:slug',
+			component: () => import('./pages/view-article'),
+		},
 	],
 };

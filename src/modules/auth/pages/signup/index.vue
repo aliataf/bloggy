@@ -1,16 +1,19 @@
 <template>
 	<div class="p-6">
-		<signup-form @submit="handleSubmit" @login="$router.push('/login')" />
+		<signup-form :is-loading="loading" @submit="handleSubmit" @login="$router.push('/login')" />
 	</div>
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 import SignupForm from '@/modules/auth/components/signup-form.vue';
 
 export default {
 	components: {
 		SignupForm,
+	},
+	computed: {
+		...mapGetters('Auth/Signup', ['loading']),
 	},
 	methods: {
 		...mapActions('Auth/Signup', ['signup']),

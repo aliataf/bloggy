@@ -10,7 +10,7 @@
 			</el-row>
 
 			<el-row class="mt-6">
-				<articles-feed v-if="articles.length > 0" :articles="articles" />
+				<articles-list v-if="articles.length > 0" :articles="articles" />
 				<div v-else>
 					<p>No articles found.</p>
 				</div>
@@ -21,11 +21,11 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
-import ArticlesFeed from '@/modules/articles/components/articles-feed.vue';
+import ArticlesList from '@/modules/articles/components/articles-list.vue';
 
 export default {
 	components: {
-		ArticlesFeed,
+		ArticlesList,
 	},
 	computed: {
 		...mapGetters('Articles/Home', ['articles', 'loading']),

@@ -1,5 +1,6 @@
 import Home from './pages/home/store';
 import CreateArticle from './pages/create-article/store';
+import ViewArticle from './pages/view-article/store';
 
 function getState() {
 	return {
@@ -9,7 +10,7 @@ function getState() {
 
 export default {
 	namespaced: true,
-	modules: { Home, CreateArticle },
+	modules: { Home, CreateArticle, ViewArticle },
 	state: getState,
 	getters: {
 		loading(state) {
