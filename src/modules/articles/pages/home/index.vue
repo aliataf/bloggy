@@ -8,13 +8,14 @@
 			<el-row class="px-4">
 				<h1 class="text-3xl">General articles</h1>
 			</el-row>
-
-			<el-row class="mt-6">
-				<articles-list v-if="articles.length > 0" :articles="articles" />
-				<div v-else>
-					<p>No articles found.</p>
-				</div>
-			</el-row>
+			<div class="max-h-[450px] overflow-auto">
+				<el-row class="mt-6">
+					<articles-list v-if="articles.length > 0" :articles="articles" />
+					<div v-else>
+						<p>No articles found.</p>
+					</div>
+				</el-row>
+			</div>
 		</el-row>
 	</div>
 </template>

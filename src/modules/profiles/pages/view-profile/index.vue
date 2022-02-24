@@ -8,25 +8,18 @@
 				<el-col :span="24" class="mt-6">
 					<h1 class="text-3xl text-center">{{ profile.username }}</h1>
 				</el-col>
-			</el-row>
-			<!-- <el-row type="flex" class="mt-3 gap-x-4">
-				<div class="flex items-center">
-					<img :src="article.author.image" class="rounded-full w-8 h-8 mr-2" />
-					<div>
-						<h3 class="text-md">{{ article.author.username }}</h3>
-						<p class="text-xs text-gray-200">{{ article.createdAt.split('T')[0] }}</p>
+				<el-col :span="24" class="flex justify-center">
+					<div v-if="isLoggedInVar">
+						<el-button
+							type="primary"
+							:plain="profile.following"
+							@click="followUnfollowProfileHandler"
+							>{{ profile.following ? 'UnFollow' : 'Follow' }}
+							{{ profile.username }}</el-button
+						>
 					</div>
-				</div>
-				<div v-if="isLoggedInVar">
-					<el-button
-						type="primary"
-						:plain="article.author.following"
-						@click="followUnfollowProfileHandler"
-						>{{ article.author.following ? 'UnFollow' : 'Follow' }}
-						{{ article.author.username }}</el-button
-					>
-				</div>
-			</el-row> -->
+				</el-col>
+			</el-row>
 		</div>
 		<el-row class="mt-3 py-5 px-12">
 			<h1 class="text-lg mb-6">Profile Articles</h1>
@@ -41,6 +34,11 @@ import { mapActions, mapGetters } from 'vuex';
 
 export default {
 	components: { ArticlesList },
+	data() {
+		return {
+			isLoggedInVar: false,
+		};
+	},
 	computed: {
 		...mapGetters('Profiles/ViewProfile', ['profile', 'loading']),
 		...mapGetters('Articles', ['articles']),
@@ -48,10 +46,16 @@ export default {
 	methods: {
 		...mapActions('Profiles/ViewProfile', ['getProfileByUsername', 'resetState']),
 		...mapActions('Articles', ['getArticles']),
+		...mapActions('Auth', ['isLoggedIn']),
+		...mapActions('Profiles', ['followUnfollowProfile']),
+		followUnfollowProfileHandler() {
+			this.followUnfollowProfile(this.profile);
+		},
 	},
-	created() {
+	async created() {
 		this.getProfileByUsername(this.$route.params.username);
 		this.getArticles({ author: this.$route.params.username, limit: 5, offset: 0 });
+		this.isLoggedInVar = await this.isLoggedIn();
 	},
 	watch: {
 		'$route.params.username'() {
