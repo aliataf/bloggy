@@ -6,6 +6,7 @@ export default {
 		return {
 			loading: false,
 			articles: [],
+			articlesCount: 0,
 		};
 	},
 	getters: {
@@ -15,6 +16,9 @@ export default {
 		articles(state) {
 			return state.articles;
 		},
+		articlesCount(state) {
+			return state.articlesCount;
+		},
 	},
 	mutations: {
 		setLoading(state, value) {
@@ -23,6 +27,9 @@ export default {
 		setArticles(state, value) {
 			state.articles = value;
 		},
+		setArticlesCount(state, value) {
+			state.articlesCount = value;
+		},
 	},
 	actions: {
 		async getArticles({ commit }, qp = {}) {
@@ -30,6 +37,7 @@ export default {
 			try {
 				let response = await ArticlesService.getAllArticles(qp);
 				commit('setArticles', response.articles);
+				commit('setArticlesCount', response.articlesCount);
 				return response;
 			} catch (error) {
 				throw error;

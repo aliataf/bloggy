@@ -1,5 +1,5 @@
 <template>
-	<div class="pt-4">
+	<el-row v-loading="loading" class="pt-4">
 		<el-row class="px-4">
 			<h1 class="text-3xl">My articles</h1>
 		</el-row>
@@ -10,7 +10,19 @@
 				<p class="text-center">No articles found.</p>
 			</div>
 		</el-row>
-	</div>
+
+		<el-row class="mt-6 pb-[200px] flex justify-center">
+			<el-pagination
+				@size-change="handleSizeChange"
+				:current-page.sync="pagination.offset"
+				:page-sizes="[5, 10, 15, 20]"
+				:page-size="pagination.limit"
+				layout="total, sizes, prev, pager, next"
+				:total="articlesCount"
+			>
+			</el-pagination>
+		</el-row>
+	</el-row>
 </template>
 
 <script>
@@ -21,15 +33,36 @@ export default {
 	components: {
 		ArticlesFeed,
 	},
+	data() {
+		return {
+			pagination: {
+				offset: 1,
+				limit: 5,
+			},
+		};
+	},
 	computed: {
-		...mapGetters('Articles/Home', ['articles']),
+		...mapGetters('Articles/Home', ['articles', 'articlesCount', 'loading']),
 		...mapGetters('User', ['user']),
 	},
 	methods: {
 		...mapActions('Articles/Home', ['getArticles']),
+		handleSizeChange(val) {
+			this.pagination.limit = val;
+			this.getArticles(this.pagination);
+		},
 	},
 	created() {
-		this.getArticles();
+		this.getArticles(this.pagination);
+	},
+	watch: {
+		pagination: {
+			handler() {
+				this.getArticles(this.pagination);
+			},
+			deep: true,
+			immediate: true,
+		},
 	},
 };
 </script>
