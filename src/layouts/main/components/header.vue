@@ -1,7 +1,10 @@
 <template>
 	<el-header class="w-screen flex justify-between items-center">
 		<h5>BLOGGY</h5>
-		<div>
+		<div class="flex items-center gap-x-6">
+			<el-button type="text" icon="el-icon-edit" @click="$router.push('/articles/create')">
+				Create Article
+			</el-button>
 			<el-dropdown>
 				<div class="flex items-center">
 					<el-button type="text">

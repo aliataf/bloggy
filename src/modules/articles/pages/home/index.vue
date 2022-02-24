@@ -1,5 +1,5 @@
 <template>
-	<el-card body-style="background: lightblue; height: 100%">
+	<div class="pt-4">
 		<el-row>
 			<h1 class="text-3xl">Bloggy Feed</h1>
 		</el-row>
@@ -10,7 +10,7 @@
 				<p class="text-center">No articles found.</p>
 			</div>
 		</el-row>
-	</el-card>
+	</div>
 </template>
 
 <script>
