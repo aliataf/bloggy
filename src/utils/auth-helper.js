@@ -1,6 +1,9 @@
+import { axiosInstance } from '@/utils/axios';
+
 class AuthHelper {
 	setAccessToken(token) {
 		localStorage.setItem('accessToken', token);
+		axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 	}
 
 	getAccessToken() {

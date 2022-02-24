@@ -13,4 +13,10 @@ export default class Service {
 			return res.data;
 		});
 	}
+
+	static createArticle(qp = {}) {
+		return axiosInstance.post(ep.ARTICLES, qp).then((res) => {
+			return res.data;
+		});
+	}
 }

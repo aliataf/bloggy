@@ -1,4 +1,5 @@
 import Home from './pages/home/store';
+import CreateArticle from './pages/create-article/store';
 
 function getState() {
 	return {
@@ -8,7 +9,7 @@ function getState() {
 
 export default {
 	namespaced: true,
-	modules: { Home },
+	modules: { Home, CreateArticle },
 	state: getState,
 	getters: {
 		loading(state) {

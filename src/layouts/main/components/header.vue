@@ -1,6 +1,6 @@
 <template>
 	<el-header class="w-screen flex justify-between items-center">
-		<h5>BLOGGY</h5>
+		<h5 @click="$router.push('/')" class="cursor-pointer">BLOGGY</h5>
 		<div class="flex items-center gap-x-6">
 			<el-button type="text" icon="el-icon-edit" @click="$router.push('/articles/create')">
 				Create Article
@@ -15,7 +15,7 @@
 					<span class="mx-4">{{ user && user.username }}</span>
 				</div>
 				<el-dropdown-menu slot="dropdown">
-					<el-dropdown-item @click="logoutHandler">Logout</el-dropdown-item>
+					<el-dropdown-item @click.native="logoutHandler">Logout</el-dropdown-item>
 				</el-dropdown-menu>
 			</el-dropdown>
 		</div>
