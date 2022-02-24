@@ -3,7 +3,7 @@
 		<main-layout-header />
 
 		<div style="height: calc(100vh - 60px)">
-			<div class="pa-6 pt-0 bg-blue-50" style="min-height: calc(100vh - 50px)">
+			<div class="pa-6 pt-0 bg-blue-50" style="min-height: calc(100vh - 60px)">
 				<router-view />
 			</div>
 		</div>

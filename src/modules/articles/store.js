@@ -1,3 +1,5 @@
+import Home from './pages/home/store';
+
 function getState() {
 	return {
 		loading: false,
@@ -6,7 +8,7 @@ function getState() {
 
 export default {
 	namespaced: true,
-	modules: {},
+	modules: { Home },
 	state: getState,
 	getters: {
 		loading(state) {
