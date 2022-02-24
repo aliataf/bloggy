@@ -28,11 +28,11 @@ export default {
 		ArticlesList,
 	},
 	computed: {
-		...mapGetters('Articles/Home', ['articles', 'loading']),
+		...mapGetters('Articles', ['articles', 'loading']),
 		...mapGetters('User', ['user']),
 	},
 	methods: {
-		...mapActions('Articles/Home', ['getArticles']),
+		...mapActions('Articles', ['getArticles']),
 	},
 	created() {
 		this.getArticles();

@@ -42,11 +42,11 @@ export default {
 		};
 	},
 	computed: {
-		...mapGetters('Articles/Home', ['articles', 'articlesCount', 'loading']),
+		...mapGetters('Articles/Feed', ['articles', 'articlesCount', 'loading']),
 		...mapGetters('User', ['user']),
 	},
 	methods: {
-		...mapActions('Articles/Home', ['getArticlesFeed']),
+		...mapActions('Articles/Feed', ['getArticlesFeed']),
 		handleSizeChange(val) {
 			this.pagination.limit = val;
 			this.fetchData();

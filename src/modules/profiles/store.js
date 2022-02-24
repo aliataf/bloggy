@@ -1,4 +1,5 @@
 import ProfilesService from '@/modules/profiles/service';
+import ViewProfile from './pages/view-profile/store';
 
 function getState() {
 	return {
@@ -8,6 +9,7 @@ function getState() {
 
 export default {
 	namespaced: true,
+	modules: { ViewProfile },
 	state: getState,
 	getters: {
 		loading(state) {

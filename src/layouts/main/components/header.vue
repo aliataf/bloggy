@@ -15,6 +15,9 @@
 					<span class="mx-4">{{ user && user.username }}</span>
 				</div>
 				<el-dropdown-menu slot="dropdown">
+					<el-dropdown-item @click.native="$router.push(`/profiles/${user.username}`)"
+						>Profile</el-dropdown-item
+					>
 					<el-dropdown-item @click.native="logoutHandler">Logout</el-dropdown-item>
 				</el-dropdown-menu>
 			</el-dropdown>
