@@ -29,7 +29,7 @@
 			</el-row> -->
 		</div>
 		<el-row class="mt-3 py-5 px-12">
-			<h1 class="text-lg">My Articles</h1>
+			<h1 class="text-lg mb-6">Profile Articles</h1>
 			<articles-list :articles="articles" />
 		</el-row>
 	</div>
@@ -46,12 +46,21 @@ export default {
 		...mapGetters('Articles', ['articles']),
 	},
 	methods: {
-		...mapActions('Profiles/ViewProfile', ['getProfileByUsername']),
+		...mapActions('Profiles/ViewProfile', ['getProfileByUsername', 'resetState']),
 		...mapActions('Articles', ['getArticles']),
 	},
 	created() {
 		this.getProfileByUsername(this.$route.params.username);
 		this.getArticles({ author: this.$route.params.username, limit: 5, offset: 0 });
+	},
+	watch: {
+		'$route.params.username'() {
+			this.getProfileByUsername(this.$route.params.username);
+			this.getArticles({ author: this.$route.params.username, limit: 5, offset: 0 });
+		},
+	},
+	destroyed() {
+		this.resetState();
 	},
 };
 </script>

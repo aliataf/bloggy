@@ -4,7 +4,10 @@
 			<el-row>
 				<h1 class="text-3xl">{{ article.title }}</h1>
 			</el-row>
-			<el-row type="flex" class="mt-3 gap-x-4">
+			<el-row class="mt-1">
+				<h1 class="text-xs text-gray-300">{{ article.description }}</h1>
+			</el-row>
+			<el-row type="flex" class="mt-6 gap-x-4">
 				<div class="flex items-center">
 					<img :src="article.author.image" class="rounded-full w-8 h-8 mr-2" />
 					<div>

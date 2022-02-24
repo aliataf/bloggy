@@ -1,13 +1,12 @@
 <template>
-	<el-card
-		shadow="hover"
-		style="background: transparent; border: none"
-		class="cursor-pointer"
-		@click.native="$router.push(`/articles/${article.slug}`)"
-	>
+	<el-card shadow="hover" style="background: transparent; border: none">
 		<el-row type="flex" justify="space-between">
 			<div class="flex items-center">
-				<img :src="article.author.image" class="rounded-full w-12 h-12 mr-2" />
+				<img
+					:src="article.author.image"
+					class="rounded-full w-12 h-12 mr-2 cursor-pointer"
+					@click="$router.push(`/profiles/${article.author.username}`)"
+				/>
 				<div>
 					<h3 class="text-lg font-bold">{{ article.author.username }}</h3>
 					<p class="text-xs text-gray-600">{{ article.createdAt.split('T')[0] }}</p>
@@ -18,8 +17,16 @@
 			<div class="px-2">
 				<h5 class="text-xl font-bold">{{ article.title }}</h5>
 				<div class="text-sm text-gray-400 font-medium">
-					{{ article.body }}
+					{{ article.description }}
 				</div>
+			</div>
+		</el-row>
+
+		<el-row type="flex" class="mt-3">
+			<div class="px-2">
+				<el-button type="text" @click="$router.push(`/articles/${article.slug}`)">
+					Read more</el-button
+				>
 			</div>
 		</el-row>
 	</el-card>
