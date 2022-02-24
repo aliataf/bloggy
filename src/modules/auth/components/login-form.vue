@@ -6,7 +6,7 @@
 				<el-input v-model="loginForm.email"></el-input>
 			</el-form-item>
 			<el-form-item label="Password" prop="password">
-				<el-input v-model="loginForm.password"></el-input>
+				<el-input v-model="loginForm.password" type="password"></el-input>
 			</el-form-item>
 
 			<el-form-item class="mt-10">

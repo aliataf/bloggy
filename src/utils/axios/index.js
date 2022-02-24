@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { addAuthorizationInterceptor, addNotificationInterceptor } from './axios-helpers';
+import { addNotificationInterceptor } from './axios-helpers';
 import authHelper from '@/utils/auth-helper';
 const axiosInstance = axios.create({
 	baseURL: process.env.VUE_APP_BASE_URL + 'api/',
@@ -13,7 +13,5 @@ const unauthenticatedAxiosInstance = axios.create({
 
 addNotificationInterceptor(axiosInstance);
 addNotificationInterceptor(unauthenticatedAxiosInstance);
-
-addAuthorizationInterceptor(axiosInstance);
 
 export { axiosInstance, unauthenticatedAxiosInstance };

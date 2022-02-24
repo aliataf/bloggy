@@ -39,7 +39,11 @@ export default {
 	actions: {
 		getAccessToken() {
 			const accessToken = authHelper.getAccessToken();
-			return accessToken;
+			if (accessToken) {
+				return Promise.resolve(accessToken);
+			} else {
+				return Promise.reject(new Error('No access token'));
+			}
 		},
 	},
 };
