@@ -1,7 +1,7 @@
 <template>
 	<div class="pt-4">
-		<el-row>
-			<h1 class="text-3xl">Bloggy Feed</h1>
+		<el-row class="px-4">
+			<h1 class="text-3xl">My articles</h1>
 		</el-row>
 
 		<el-row class="mt-6">
@@ -23,12 +23,13 @@ export default {
 	},
 	computed: {
 		...mapGetters('Articles/Home', ['articles']),
+		...mapGetters('User', ['user']),
 	},
 	methods: {
-		...mapActions('Articles/Home', ['getArticlesFeed']),
+		...mapActions('Articles/Home', ['getArticles']),
 	},
 	created() {
-		this.getArticlesFeed();
+		this.getArticles();
 	},
 };
 </script>

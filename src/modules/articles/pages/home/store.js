@@ -25,6 +25,18 @@ export default {
 		},
 	},
 	actions: {
+		async getArticles({ commit }, qp = {}) {
+			commit('setLoading', true);
+			try {
+				let response = await ArticlesService.getAllArticles(qp);
+				commit('setArticles', response.articles);
+				return response;
+			} catch (error) {
+				throw error;
+			} finally {
+				commit('setLoading', false);
+			}
+		},
 		async getArticlesFeed({ commit }) {
 			commit('setLoading', true);
 			try {

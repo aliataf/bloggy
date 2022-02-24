@@ -9,7 +9,7 @@ export default class Service {
 	}
 
 	static getAllArticles(qp = {}) {
-		return axiosInstance.get(ep.ARTICLES, qp).then((res) => {
+		return axiosInstance.get(ep.ARTICLES, { params: qp }).then((res) => {
 			return res.data;
 		});
 	}
